@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations: 
+    nginx.ingress.kubernetes.io/rewrite-target: / 
+#    nginx.ingress.kubernetes.io/app-root: /app1
+  name: demo-ingress
+  namespace: ingress-nginx
+spec:
+  rules:
+  - host: kuberneteslb01.p21.eng.sjc01.qualys.com
+    http:
+      paths:
+      - path: /helloworld
+        backend:
+          serviceName: helloworld-service
+          servicePort: 5000
+#      - path: /byeworld
+#        backend:
+#          serviceName: byeworld-service
+#          servicePort: 6000

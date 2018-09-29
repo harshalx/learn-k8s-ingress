@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: byeworld-service
+  namespace: nginx-ingress
+  labels:
+    service: byeworld
+spec:
+  type: NodePort
+  ports:
+   - name: http
+     port: 6000
+     targetPort: 80
+     protocol: TCP
+  selector:
+    app: byeworld
