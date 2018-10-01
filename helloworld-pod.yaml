@@ -2,7 +2,7 @@ apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
 kind: Deployment
 metadata:
   name: helloworld-deployment
-  namespace: ingress-nginx
+  namespace: nginx-ingress
 spec:
   selector:
     matchLabels:
@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: hello-world
-        image: art-hq.intranet.qualys.com:5001/dev-docker/hvaidya/kitematic/hello-world-nginx:latest
+        image: kitematic/hello-world-nginx:latest
         ports:
         - containerPort: 80
 

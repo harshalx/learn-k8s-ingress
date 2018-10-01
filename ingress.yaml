@@ -3,19 +3,18 @@ kind: Ingress
 metadata:
   annotations: 
     nginx.ingress.kubernetes.io/rewrite-target: / 
-#    nginx.ingress.kubernetes.io/app-root: /app1
   name: demo-ingress
-  namespace: ingress-nginx
+  namespace: nginx-ingress
 spec:
   rules:
-  - host: kuberneteslb01.p21.eng.sjc01.qualys.com
+  - host: kubernetes-master
     http:
       paths:
       - path: /helloworld
         backend:
           serviceName: helloworld-service
-          servicePort: 5000
-#      - path: /byeworld
-#        backend:
-#          serviceName: byeworld-service
-#          servicePort: 6000
+          servicePort: 80
+      - path: /byeworld
+        backend:
+          serviceName: byeworld-service
+          servicePort: 80
